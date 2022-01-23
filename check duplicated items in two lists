@@ -1,0 +1,19 @@
+import pandas as pd
+import numpy as np
+data1 = pd.DataFrame({
+    'a':[1,2,3,4,5,6,7,8,9,9]
+})
+data2 = pd.DataFrame({
+    'a':[1,12,13,14,15,16,17,18,19,19]
+})
+def same_element(list1,list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    return (set1 & set2),(set1 ^ set2),((set1|set2)-set2),((set1|set2)-set1)
+
+same,dif,alone_forward,alone_backward = same_element(data1['a'],data2['a'])
+print('相同的元素：',same,'相同元素个数：',len(same))
+print('不同的元素：',dif,'不相同的元素个数：',len(dif))
+print('列表1有列表2没有的元素：',alone_forward,'列表1有列表2没有的元素个数：',len(alone_forward))
+print('列表1没有列表2有的元素：',alone_backward,'列表1没有列表2有的元素个数：',len(alone_backward))
+
